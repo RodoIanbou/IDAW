@@ -1,28 +1,37 @@
 
+
 <body id="page-top">
         <!-- Navigation-->
-        
+       
         <!-- Masthead-->
         <header class="masthead bg-primary text-white text-center">
             <div class="container d-flex align-items-center flex-column">
                 <!-- Masthead Avatar Image-->
-                <img class="masthead-avatar mb-5" src="assets/img/PdP pro.jpg" alt="..." />
+                
                 <!-- Masthead Heading-->
-                <h1 class="masthead-heading text-uppercase mb-0">Rodolphe IANBOUKHTINE</h1>
+                <h1 class="masthead-heading text-uppercase mb-0">Contact</h1>
                 <!-- Icon Divider-->
                 <div class="divider-custom divider-light">
                     <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-custom-line"></div>
+                    
+                    
                 </div>
                 <!-- Masthead Subheading-->
-                <p class="masthead-subheading font-weight-light mb-0">Elève ingénieur en M2 à l'IMT Nord Europe</p>
+                <p class="masthead-subheading font-weight-light mb-0">contact</p>
             </div>
         </header>
         
+        <!-- CV Section-->
+        <section class="page-section bg-primary text-white mb-0" id="about">
+            <div class="container">
+                <!-- CV Section Heading-->
+                
+                
+
+        </section>
+        
 
 
-       
     
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

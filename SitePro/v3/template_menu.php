@@ -1,14 +1,13 @@
-
 <?php
-function renderMenuToHTML($currentPageId) {
+function renderMenuToHTML($currentPageId, $currentLang) {
     // un tableau qui définit la structure du site
     $mymenu = array(
-        // idPage => [titre]
-        'accueil' => array('Accueil','accueil.php'),
-        'cv' => array('Cv','cv.php'),
-        'projets' => array('Mes Projets','projets.php'),
-        'infos_techniques' => array('Informations techniques','infos_techniques.php'),
-
+        // idPage => [titre_fr, titre_en]
+        'accueil' => array('Accueil', 'Home Page'),
+        'cv' => array('Cv', 'CV'),
+        'projets' => array('Mes Projets', 'Projects'),
+        'infos_techniques' => array('Informations techniques', 'Technical Information'),
+        'contact' => array('Contact', 'Contact'),
     );
 
     echo '<nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">';
@@ -21,13 +20,22 @@ function renderMenuToHTML($currentPageId) {
     echo '<div class="collapse navbar-collapse" id="navbarResponsive">';
     echo '<ul class="navbar-nav ms-auto">';
 
+    // parcours du tableau $mymenu pour afficher les liens du menu
     foreach ($mymenu as $pageId => $pageParameters) {
-        $title = $pageParameters[0];
+        $title = $pageParameters[$currentLang == 'fr' ? 0 : 1]; // utilise le titre correspondant à la langue courante
         $activeClass = ($pageId == $currentPageId) ? 'active' : '';
         echo '<li class="nav-item mx-0 mx-lg-1">';
-        echo '<a class="nav-link py-3 px-0 px-lg-3 ' . $activeClass . '" href="index.php?page=' . $pageId . '">' . $title . '</a>';
+        echo '<a class="nav-link py-3 px-0 px-lg-3 ' . $activeClass . '" href="index.php?page=' . $pageId . '&lang=' . $currentLang . '">' . $title . '</a>';
         echo '</li>';
     }
+
+    // Ajouter des liens pour passer d'une langue à une autre
+    echo '<li class="nav-item mx-0 mx-lg-1" mr-8>';
+    echo '<a class="nav-link py-3 px-0 px-lg-3" href="index.php?page=' . $currentPageId . '&lang=fr">Français</a>';
+    echo '</li>';
+    echo '<li class="nav-item mx-0 mx-lg-1" mr-10>';
+    echo '<a class="nav-link py-3 px-0 px-lg-3" href="index.php?page=' . $currentPageId . '&lang=en">English</a>';
+    echo '</li>';
 
     echo '</ul>';
     echo '</div>';
@@ -35,4 +43,3 @@ function renderMenuToHTML($currentPageId) {
     echo '</nav>';
 }
 ?>
-

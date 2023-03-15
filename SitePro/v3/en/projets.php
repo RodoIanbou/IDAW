@@ -1,9 +1,8 @@
-<?php require_once('template_header.php');?>
 
-    
-    <body >
-        <!-- Navigation-->
-        <?php require_once('template_menu.php');renderMenuToHTML('projets');?>
+
+<body >
+        
+       
         <!-- Masthead-->
         <header class="masthead bg-primary text-white text-center">
             <div class="container d-flex align-items-center flex-column">
@@ -21,7 +20,7 @@
         <section class="page-section portfolio" id="portfolio">
             <div class="container">
                 <!-- Portfolio Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Projets</h2>
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Projects</h2>
                 <!-- Icon Divider-->
                 <div class="divider-custom">
                     <div class="divider-custom-line"></div>
@@ -78,7 +77,7 @@
                             <div class="row justify-content-center">
                                 <div class="col-lg-8">
                                     <!-- Portfolio Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Projet Data 1: Credit card Fraud detection</h2>
+                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Projetc Data 1: Credit card Fraud detection</h2>
                                     <!-- Icon Divider-->
                                     <div class="divider-custom">
                                         <div class="divider-custom-line"></div>
@@ -88,7 +87,7 @@
                                     <!-- Portfolio Modal - Image-->
                                     <img class="img-fluid rounded mb-5" src="assets/img/portfolio/creditcard.png" alt="..." />
                                     <!-- Portfolio Modal - Text-->
-                                    <p class="mb-4">Premier projet réalisé dans le cadre l'UV AADA. Ce projet de machine leanring a pour but de détecter si une transaction bancaire est froduleuse ou non</p>
+                                    <p class="mb-4">First project realized in the framework of the UV AADA. This leanring machine project aims to detect if a bank transaction is fraudulent or not</p>
                                     <button class="btn btn-primary" data-bs-dismiss="modal">
                                         <i class="fas fa-xmark fa-fw"></i>
                                         Close Window
@@ -110,7 +109,7 @@
                             <div class="row justify-content-center">
                                 <div class="col-lg-8">
                                     <!-- Portfolio Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Prévision des items de vente d'un supermarché</h2>
+                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Sales forecast of a supermarket</h2>
                                     <!-- Icon Divider-->
                                     <div class="divider-custom">
                                         <div class="divider-custom-line"></div>
@@ -120,7 +119,7 @@
                                     <!-- Portfolio Modal - Image-->
                                     <img class="img-fluid rounded mb-5" src="assets/img/portfolio/prevision.png" alt="..." />
                                     <!-- Portfolio Modal - Text-->
-                                    <p class="mb-4">Deuxième projet de machine learning qui utilise une régression logistique pour prévoir les ventes des items d'un supermarché</p>
+                                    <p class="mb-4">Second machine learning project that uses logistic regression to predict sales of items in a supermarket</p>
                                     <button class="btn btn-primary" data-bs-dismiss="modal">
                                         <i class="fas fa-xmark fa-fw"></i>
                                         Close Window
@@ -142,7 +141,7 @@
                             <div class="row justify-content-center">
                                 <div class="col-lg-8">
                                     <!-- Portfolio Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Application mobile de bibliothèque de médias</h2>
+                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Multimedia Database mobile app</h2>
                                     <!-- Icon Divider-->
                                     <div class="divider-custom">
                                         <div class="divider-custom-line"></div>
@@ -152,7 +151,7 @@
                                     <!-- Portfolio Modal - Image-->
                                     <img class="img-fluid rounded mb-5" src="assets/img/portfolio/app.png" alt="..." />
                                     <!-- Portfolio Modal - Text-->
-                                    <p class="mb-4">Application mobile codée en dart avec le framework flutter</p>
+                                    <p class="mb-4">Mobile application coded in dart with the flutter framework</p>
                                     <button class="btn btn-primary" data-bs-dismiss="modal">
                                         <i class="fas fa-xmark fa-fw"></i>
                                         Close Window
@@ -165,7 +164,7 @@
             </div>
         </div>
         
-        <?php require_once('template_footer.php');?>
+
 
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
