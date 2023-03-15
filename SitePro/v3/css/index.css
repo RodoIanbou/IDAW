@@ -1,0 +1,4 @@
+#currentpage {
+    color: rgb(70, 155, 115) !important; /* couleur de texte pour le lien actif */
+    font-weight: bold; /* graisse de texte pour le lien actif */
+  }

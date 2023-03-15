@@ -7,9 +7,7 @@ $currentPageId = $_GET['page'];
 }
 ?>
 
-
-
-        <?php
+<?php
 renderMenuToHTML($currentPageId);
 ?>
 <section class="corps">
@@ -21,9 +19,10 @@ else
 require_once("error.php");
 ?>
 </section>
-<?php require_once("template_footer.php");?>
+<?php
+
+require_once("template_footer.php");
+?>
 
 
-       
     
-
