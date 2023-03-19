@@ -1,0 +1,1 @@
+v2 du site prtofolio avec les pages webs factorisées (écriture en une seule fois et dans un seul fichier). Le menu aussi a été factorisé.

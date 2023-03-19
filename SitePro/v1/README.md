@@ -1,0 +1,1 @@
+Réalisation de la v1 du site portofolio. Site web statique avec un fichier html par page du site.
