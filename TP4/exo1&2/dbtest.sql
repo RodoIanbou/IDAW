@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email.id`) VALUES
+INSERT INTO `users` (`id`, `name`, `email`) VALUES
 (1, 'Rodolphe Ianboukhtine', 'rodoianbou@gmail.com'),
 (2, 'Evrard Soavina', 'evrasoa@gmail.com'),
 (3, 'Ermis Cherry-Pellat', 'ermicherry@gmail.com'),
