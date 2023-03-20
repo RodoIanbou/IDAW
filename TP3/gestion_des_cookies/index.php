@@ -56,13 +56,6 @@ echo '<link rel="stylesheet" href="' . $style . '.css" />';
 </table>
 </form>
 
-<?php 
-// Ouvrir/réactiver la session. 
-session_start(); 
-// Enregistrer une information dans la session. 
-$_SESSION['login'] = ’Olivier’; 
-?> 
 
-</html>
 
 
