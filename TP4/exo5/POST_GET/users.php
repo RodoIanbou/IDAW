@@ -41,38 +41,36 @@
     
     
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-      // vérification que les paramètres ont été fournis
-      if (!isset($_POST['name']) || !isset($_POST['email'])) {
+      // Vérification que les données ont été fournies
+      $data = json_decode(file_get_contents('php://input'), true);
+      if (!isset($data['id']) || !isset($data['name']) || !isset($data['email'])) {
           header("HTTP/1.1 400 Bad Request");
-          echo "Veuillez fournir un nom et une adresse e-mail pour créer un utilisateur.";
+          echo "Veuillez fournir un identifiant, un nom et une adresse e-mail pour créer un utilisateur.";
           exit();
       }
-  
+      
       //Création de l'utilisateur dans la base de données
       try {
           $pdo = new PDO($connectionString, _MYSQL_USER, _MYSQL_PASSWORD, $options);
           $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   
-          // récupération des données depuis la requête cURL POST
-          $data = json_decode(file_get_contents('php://input'), true);
-          $name = $data['name'];
-          $email = $data['email'];
-          $sql = "INSERT INTO users (name, email) VALUES (:name, :email)";
+          $sql = "INSERT INTO users (id, name, email) VALUES (:id, :name, :email)";
           $stmt = $pdo->prepare($sql);
-          $stmt->bindParam(':name', $name);
-          $stmt->bindParam(':email', $email);
+          $stmt->bindParam(':id', $data['id']);
+          $stmt->bindParam(':name', $data['name']);
+          $stmt->bindParam(':email', $data['email']);
           $stmt->execute();
           $userId = $pdo->lastInsertId();
           $pdo = null;
   
-          // envoi de la réponse avec le code HTTP 201 Created
+          // Envoi de la réponse avec le code HTTP 201 Created
           header("HTTP/1.1 201 Created");
           header("Location: /users.php/$userId");
           header("Content-Type: application/json");
           $user = array(
               "id" => $userId,
-              "name" => $name,
-              "email" => $email
+              "name" => $data['name'],
+              "email" => $data['email']
           );
           echo json_encode($user);
       } catch (PDOException $e) {
@@ -80,6 +78,7 @@
           echo "Erreur lors de la création de l'utilisateur : " . $e->getMessage();
       }
   }
+  
   
     
 
