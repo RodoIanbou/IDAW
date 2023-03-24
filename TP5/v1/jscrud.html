@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+    <title>tabletest</title>
+    <style>
+      body{ margin-top: 5em; }
+      .table {
+        margin-top: 100px;
+        margin-bottom: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Nom</th>
+          <th scope="col">Prenom</th>
+          <th scope="col">Date de naissance</th>
+          <th scope="col">Aime le cours Web</th>
+          <th scope="col">Remarques</th>
+          <th scope="col">CRUD</th>
+        </tr>
+      </thead>
+      <tbody id="studentsTableBody">
+      </tbody>
+    </table>
+    <form id="addStudentForm" action="" onsubmit="onFormSubmit(event);">
+      <div class="form-group row">
+        <label for="inputNom" class="col-sm-2 col-form-label">Nom*</label>
+        <div class="col-sm-3">
+          <input type="text" class="form-control" id="inputNom">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputPrenom" class="col-sm-2 col-form-label">Prénom</label>
+        <div class="col-sm-3">
+          <input type="text" class="form-control" id="inputPrenom">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputDateNaissance" class="col-sm-2 col-form-label">Date de naissance</label>
+        <div class="col-sm-3">
+          <input type="date" class="form-control" id="inputDateNaissance">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputAimeCours" class="col-sm-2 col-form-label">Aime le cours</label>
+        <div class="col-sm-3">
+          <input type="checkbox" class="form-control" id="inputAimeCours">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputRemarques" class="col-sm-2 col-form-label">Remarques</label>
+        <div class="col-sm-3">
+          <textarea class="form-control" id="inputRemarques"></textarea>
+        </div>
+      </div>
+      <div class="form-group row">
+        <span class="col-sm-2"></span>
+        <div class="col-sm-2">
+          <button type="submit" class="btn btn-primary form-control">Submit</button>
+        </div>
+      </div>
+    </form>
+    <script>
+  function onFormSubmit(event) {
+    // prevent the form to be sent to the server
+    event.preventDefault();
+    
+    // récupérer les valeurs saisies dans le formulaire
+    let nom = $("#inputNom").val();
+    let prenom = $("#inputPrenom").val();
+    let dateNaissance = $("#inputDateNaissance").val();
+    let aimeCours = $("#inputAimeCours").is(":checked");
+    let remarques = $("#inputRemarques").val();
+    
+    // ajouter une nouvelle ligne dans le tableau avec les valeurs saisies
+    $("#studentsTableBody").append(`
+        <tr>
+            <td>${nom}</td>
+            <<td>${prenom}</td>
+            <td>${dateNaissance}</td>
+            <td>${aimeCours ? 'Oui' : 'Non'}</td>
+            <td>${remarques}</td>
+            <td><button class="btn btn-danger btn-sm delete-row">Supprimer</button></td>
+            <td><button class="btn btn-danger btn-sm edit-row">Edit</button></td>
+        </tr>
+    `);
+    
+    // effacer les valeurs saisies dans le formulaire
+    $("#inputNom").val("");
+    $("#inputPrenom").val("");
+    $("#inputDateNaissance").val("");
+    $("#inputAimeCours").prop("checked", false);
+    $("#inputRemarques").val("");
+}
+
+// ajouter un écouteur d'événement pour le bouton "Submit"
+$("#addStudentForm").submit(onFormSubmit);
+
+// ajouter un écouteur d'événement pour le bouton "Supprimer"
+$("#studentsTableBody").on("click", ".delete-row", function() {
+    $(this).closest("tr").remove();
+});
+
+$("#studentsTableBody").on("click", ".edit-row", function() {
+  let currentRow = $(this).closest("tr");
+  let nom = currentRow.find("td:eq(0)").text();
+  let prenom = currentRow.find("td:eq(1)").text();
+  let dateNaissance = currentRow.find("td:eq(2)").text();
+  let aimeCours = currentRow.find("td:eq(3)").text() === "Oui";
+  let remarques = currentRow.find("td:eq(4)").text();
+
+  $("#inputNom").val(nom);
+  $("#inputPrenom").val(prenom);
+  $("#inputDateNaissance").val(dateNaissance);
+  $("#inputAimeCoursCheckbox").prop("checked", aimeCours);
+  $("#inputRemarques").val(remarques);
+});
+    </script>
+    </body>
+    </html>
