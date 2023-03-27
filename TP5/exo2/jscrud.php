@@ -11,34 +11,14 @@
       </div>
 
     </header>
-    <?php
-define('_MYSQL_HOST','127.0.0.1');
-define('_MYSQL_PORT',3306);
-define('_MYSQL_DBNAME','dbtest');
-define('_MYSQL_USER','root');
-define('_MYSQL_PASSWORD','');
-?>
+
 
     <?php
     require_once('config.php');
+    require_once('connexion.php');
+    
 
-    // connexion à la base de données
-    $connectionString = "mysql:host="._MYSQL_HOST;
-    if (defined('_MYSQL_PORT'))
-      $connectionString .= ";port=". _MYSQL_PORT;
-    $connectionString .= ";dbname=" . _MYSQL_DBNAME;
-    $options = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8' );
-    $pdo = NULL;
-    try {
-      $pdo = new PDO($connectionString,_MYSQL_USER,_MYSQL_PASSWORD,$options);
-      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    }
-    catch (PDOException $erreur) {
-      echo 'Erreur : '.$erreur->getMessage();
-    }
-    
-    
-    if (isset($_POST['valider'])) {
+  if (isset($_POST['Ajouter'])) {
       //On récupère les valeurs entrées par l'utilisateur :
       $name = $_POST['name'];
       
@@ -124,7 +104,8 @@ if (isset($_POST['modifier'])) {
     } else {
       echo "Aucun utilisateur trouvé.";
     }
-    // formulaire de modification
+    
+  // formulaire de modification
   if (isset($_POST['edit'])) {
   $id = $_POST['edit'];
   $request = $pdo->prepare("SELECT * FROM users WHERE id = :id");
@@ -206,17 +187,16 @@ if (isset($_POST['modifier'])) {
 
             }
             
-            $(document).ready(function(){
+    $(document).ready(function(){
     $('#ajouter-utilisateur').on('submit', function(e){
         e.preventDefault(); // Empêche le formulaire de se soumettre normalement
         var nom = $('#nom').val(); // Récupère la valeur du champ nom
-        var prenom = $('#prenom').val(); // Récupère la valeur du champ prénom
-        var url = 'http://localhost/IDAW/TP4/exo5/xxx'; // URL e API
+        var url = 'http://localhost/IDAW/TP5/exo2/api.php'; // URL e API
 
         // Envoie la requête AJAX avec jQuery
         $.ajax({
             type: 'POST',
-            url: ur
+            url: url,
             data: {nom: nom},
             success: function(response){
                 // Si la requête réussit, affiche un message de confirmation

@@ -50,7 +50,7 @@
           $pdo = new PDO($connectionString, _MYSQL_USER, _MYSQL_PASSWORD, $options);
           $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   
-          $sql = "INSERT INTO users (id, name, email) VALUES (:id, :name, :email)";
+          $sql = "INSERT INTO users (id, name) VALUES (:id, :name)";
           $stmt = $pdo->prepare($sql);
           $stmt->bindParam(':id', $data['id']);
 
@@ -75,13 +75,7 @@
       }
   }
   
-  
-    
-
-
-
-
-  // Requête DELETE pour supprimer un utilisateur de la base
+ // Requête DELETE pour supprimer un utilisateur de la base
 if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
   // Vérification si l'ID de l'utilisateur à supprimer a été fourni
   if (!isset($_GET['id'])) {
@@ -114,8 +108,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
 
 
 
-
-
 // Requête PUT pour mettre à jour un utilisateur de la base
 if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
   // Vérification si l'ID de l'utilisateur à mettre à jour a été fourni
@@ -142,13 +134,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
   // Récupération des données depuis la requête cURL PUT
   $data = json_decode(file_get_contents('php://input'), true);
   $name = isset($data['name']) ? $data['name'] : $user->name;
-  $email = isset($data['email']) ? $data['email'] : $user->email;
+  
   
   try {
   $request = $pdo->prepare("UPDATE users SET name = :name, email = :email WHERE id = :userId");
   $request->bindParam(':name', $name);
-  $request->bindParam(':email', $email);
-  $request->bindParam(':userId', $userId, PDO::PARAM_INT);
+ $request->bindParam(':userId', $userId, PDO::PARAM_INT);
   $request->execute();
   
   
@@ -241,14 +232,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'PATCH') {
   }
 }
 
-
-
-
-  
-    
-
-   
-
-
-
-    ?>
+?>
