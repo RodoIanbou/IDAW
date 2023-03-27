@@ -105,7 +105,7 @@ if (isset($_POST['modifier'])) {
       echo "Aucun utilisateur trouvé.";
     }
     
-  // formulaire de modification
+    // formulaire de modification
   if (isset($_POST['edit'])) {
   $id = $_POST['edit'];
   $request = $pdo->prepare("SELECT * FROM users WHERE id = :id");
@@ -187,28 +187,7 @@ if (isset($_POST['modifier'])) {
 
             }
             
-    $(document).ready(function(){
-    $('#ajouter-utilisateur').on('submit', function(e){
-        e.preventDefault(); // Empêche le formulaire de se soumettre normalement
-        var nom = $('#nom').val(); // Récupère la valeur du champ nom
-        var url = 'http://localhost/IDAW/TP5/exo2/api.php'; // URL e API
 
-        // Envoie la requête AJAX avec jQuery
-        $.ajax({
-            type: 'POST',
-            url: url,
-            data: {nom: nom},
-            success: function(response){
-                // Si la requête réussit, affiche un message de confirmation
-                alert('Utilisateur ajouté avec succès !');
-            },
-            error: function(xhr, status, error){
-                // Si la requête échoue, affiche un message d'erreur
-                alert('Erreur : ' + xhr.responseText);
-            }
-        });
-    });
-});
 
         </script>
 
